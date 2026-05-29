@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lasse Giorgio Lemmer | Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Personal portfolio of Lasse Giorgio Lemmer - Data Science & Machine Learning student at KIT, and founder of music-roulette.com and dach-auktionen.com.">
+    <meta name="keywords" content="Lasse Giorgio Lemmer, Data Scientist, Machine Learning, KIT, Industrial Engineering, Roland Berger, Scalable Capital, Mercedes-Benz, music-roulette.com, dach-auktionen.com, AI, PyTorch, Founder">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Lasse Giorgio Lemmer | Portfolio">
+    <meta property="og:description" content="Personal portfolio of Lasse Giorgio Lemmer - Data Science, Machine Learning & Tech Ventures.">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Content Security Policy for Github Pages -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">LGL<span>.</span></a>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav id="main-nav" class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#ventures" class="nav-link">Ventures</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link btn-contact-nav">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-gradients">
+                <div class="gradient-sphere sphere-1"></div>
+                <div class="gradient-sphere sphere-2"></div>
+            </div>
+            
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-tagline">Welcome to my portfolio</span>
+                    <h1 class="hero-title">Lasse Giorgio Lemmer</h1>
+                    <h2 class="hero-subtitle">I'm a <span id="typing-text" class="text-accent"></span><span class="cursor">|</span></h2>
+                    <p class="hero-description">
+                        I am a Master's student in Industrial Engineering & Management at the Karlsruhe Institute of Technology (KIT) and the founder of music-roulette.com and dach-auktionen.com.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#ventures" class="btn btn-primary">My Ventures</a>
+                        <a href="#projects" class="btn btn-secondary">Selected Projects</a>
+                    </div>
+                    
+                    <!-- Social quick links -->
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/lasse-lemmer-242a0a1b8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" id="linkedin-hero">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="https://github.com/lasle" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" id="github-hero">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        </a>
+                        <a href="mailto:lasselemmer@gmail.com" aria-label="Send Email" id="email-hero">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#about" class="scroll-indicator" aria-label="Scroll to About Section">
+                <span class="mouse-wheel"></span>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container scroll-reveal">
+                <div class="section-header">
+                    <span class="subtitle">Brief Summary</span>
+                    <h2 class="title">About Me</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I am a Master's student in Industrial Engineering & Management at the Karlsruhe Institute of Technology (KIT). My focus lies in machine learning engineering, quantitative analysis, and building digital products.
+                        </p>
+                        <p>
+                            Besides my academic path, I enjoy building digital tools. I created <strong>music-roulette.com</strong> (a Spotify-integrated social game) and am currently developing <strong>dach-auktionen.com</strong>, an aggregator platform aiming to improve transparency in the highly fragmented foreclosure auctions market in the German-speaking area.
+                        </p>
+                        <p>
+                            My professional background includes strategy and AI consulting at Roland Berger (during my gap year in Munich), data automation at Scalable Capital, and analytics at Mercedes-Benz. I enjoy working on projects where I can combine technical engineering with strategic logic.
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="stat-num">3.80</span>
+                            <span class="stat-lbl">Master's GPA (KIT)</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">4.00</span>
+                            <span class="stat-lbl">GPA École Polytechnique</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">2</span>
+                            <span class="stat-lbl">Web Platforms Founded</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">75%</span>
+                            <span class="stat-lbl">Energy Savings in IoT Project</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ventures Section -->
+        <section id="ventures" class="section bg-light-dark">
+            <div class="container scroll-reveal">
+                <div class="section-header">
+                    <span class="subtitle">My Projects</span>
+                    <h2 class="title">My Ventures</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Venture 1: music-roulette.com -->
+                    <div class="project-card card">
+                        <div class="project-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        </div>
+                        <h3>music-roulette.com</h3>
+                        <p class="project-tag">Creator & Developer</p>
+                        <p class="project-desc">
+                            I built music-roulette.com, a multiplayer music guessing game integrated with the Spotify API. I designed the real-time lobby synchronization, stateful player sessions, and playlist integration so friends can test their music knowledge.
+                        </p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>Vite</span>
+                            <span>Spotify API</span>
+                            <span>Supabase</span>
+                        </div>
+                    </div>
+
+                    <!-- Venture 2: dach-auktionen.com -->
+                    <div class="project-card card">
+                        <div class="project-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <h3>dach-auktionen.com</h3>
+                        <p class="project-tag">Founder & Developer</p>
+                        <p class="project-desc">
+                            I am developing dach-auktionen.com, a central aggregator platform for foreclosure auctions (Zwangsversteigerungen) in Germany, Austria, and Switzerland. My goal is to simplify a fragmented real estate market and provide better data accessibility.
+                        </p>
+                        <div class="project-tech">
+                            <span>Data Engineering</span>
+                            <span>Web Scraping</span>
+                            <span>Search Indexing</span>
+                            <span>FinTech / PropTech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="container scroll-reveal">
+                <div class="section-header">
+                    <span class="subtitle">Academic Milestones</span>
+                    <h2 class="title">Education</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="timeline">
+                    <!-- KIT Master -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Oct 2025 – Present</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Industrial Engineering and Management (Master of Science)</h3>
+                                <span class="badge badge-gpa">GPA 3.80</span>
+                            </div>
+                            <span class="institution">Karlsruhe Institute of Technology (KIT)</span>
+                            <p class="timeline-desc">
+                                I am continuing my studies with a focus on advanced Machine Learning, optimization, and quantitative business methods.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- École Polytechnique Exchange -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Sep 2022 – Feb 2023</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Exchange Program (Cycle Ingénieur)</h3>
+                                <span class="badge badge-gpa">GPA 4.00</span>
+                            </div>
+                            <span class="institution">École Polytechnique, Paris</span>
+                            <p class="timeline-desc">
+                                I spent a semester abroad focusing on quantitative Machine Learning and Big Data coursework.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- KIT Bachelor -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Oct 2020 – Nov 2024</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Industrial Engineering and Management (Bachelor of Science)</h3>
+                                <span class="badge badge-gpa">GPA 3.40</span>
+                            </div>
+                            <span class="institution">Karlsruhe Institute of Technology (KIT)</span>
+                            <div class="thesis-highlight">
+                                <strong>My B.Sc. Thesis:</strong> <em>Explainable Artificial Intelligence for enhanced image recognition in healthcare.</em> I researched Informed Machine Learning methods to incorporate expert medical knowledge into neural networks, aiming to make chest X-ray classifiers more transparent and reliable.
+                            </div>
+                            <p class="timeline-desc">
+                                Laying theoretical foundations in mathematics, computer science, optimization, and business.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section bg-light-dark">
+            <div class="container scroll-reveal">
+                <div class="section-header">
+                    <span class="subtitle">Professional History</span>
+                    <h2 class="title">Work Experience</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Scalable Capital -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Mar 2025 – Aug 2025</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Investment Operations Intern</h3>
+                                <span class="badge badge-work">Fintech</span>
+                            </div>
+                            <span class="company">Scalable Capital (Munich)</span>
+                            <ul class="timeline-bullets">
+                                <li>I developed and automated operations workflows using Python and JavaScript to process large-scale trading and reporting data.</li>
+                                <li>I built custom data analytical dashboards to support operational decisions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Roland Berger -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Nov 2024 – Feb 2025 (Gap Year)</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Data & AI Consulting Intern</h3>
+                                <span class="badge badge-work">Consulting</span>
+                            </div>
+                            <span class="company">Roland Berger (Digital, Munich)</span>
+                            <ul class="timeline-bullets">
+                                <li>I analyzed statistical data using Databricks, Python, and SQL to derive business insights.</li>
+                                <li>I supported the development of a pricing optimization tool for a European hardware retail chain.</li>
+                                <li>I helped conceptualize a collaborative corporate AI-Hub for a German automotive tier-1 supplier.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Informatics Tutor -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Apr 2024 – Sep 2024</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Teaching Assistant: Foundations of Informatics</h3>
+                                <span class="badge badge-work">Academic</span>
+                            </div>
+                            <span class="company">KIT | Institute for Informatics</span>
+                            <p class="timeline-desc">
+                                I led weekly recitation classes on mathematical logic, algorithmic complexity, graph theory, and NP-hard problems for undergraduate students.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- KSRI Working Student -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Mar 2023 – Sep 2023</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Machine Learning Working Student</h3>
+                                <span class="badge badge-work">Research</span>
+                            </div>
+                            <span class="company">Karlsruhe Service Research Institute (KSRI) & IBM</span>
+                            <p class="timeline-desc">
+                                I researched and implemented topological image recognition algorithms in PyTorch, collaborating with IBM Research.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Mercedes Benz -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Apr 2022 – Aug 2022</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Data Analytics & Automotive Intelligence Intern</h3>
+                                <span class="badge badge-work">Automotive</span>
+                            </div>
+                            <span class="company">Mercedes-Benz AG</span>
+                            <ul class="timeline-bullets">
+                                <li>I conducted quantitative economic research to analyze battery electric vehicle (BEV) and luxury strategy.</li>
+                                <li>I programmed multivariate time-series forecasting models in R for boardroom presentation decks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Stochastics Tutor -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Oct 2021 – Mar 2022</div>
+                        <div class="timeline-content card">
+                            <div class="card-header-flex">
+                                <h3>Teaching Assistant: Mathematics 1</h3>
+                                <span class="badge badge-work">Academic</span>
+                            </div>
+                            <span class="company">KIT | Institute for Stochastics</span>
+                            <p class="timeline-desc">
+                                I taught undergraduate classes in calculus, mathematical analysis, and linear algebra.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="section">
+            <div class="container scroll-reveal">
+                <div class="section-header">
+                    <span class="subtitle">Highlights</span>
+                    <h2 class="title">Selected Projects</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Project 1: XAI in Healthcare -->
+                    <div class="project-card card">
+                        <div class="project-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h3>Explainable AI (XAI) in Healthcare</h3>
+                        <p class="project-tag">B.Sc. Thesis Project</p>
+                        <p class="project-desc">
+                            In my Bachelor's thesis, I focused on making deep learning classifiers in healthcare more transparent. I researched Informed Machine Learning techniques to integrate clinical rules into neural networks, using explainability methods (like Grad-CAM) to visualize what a model detects on chest X-rays.
+                        </p>
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>Python</span>
+                            <span>Computer Vision</span>
+                            <span>Explainable AI</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Steelworks Defect Reduction -->
+                    <div class="project-card card">
+                        <div class="project-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/><path d="M20 9h3"/><path d="M20 15h3"/><path d="M1 9h3"/><path d="M1 15h3"/></svg>
+                        </div>
+                        <h3>ML-Based Steel Defect Prevention</h3>
+                        <p class="project-tag">M.Sc. Project (German Steelworks)</p>
+                        <p class="project-desc">
+                            I designed machine learning models to analyze manufacturing parameters at a German steelworks. The goal was to predict and prevent material defects in the production line, helping reduce scrap and improve quality.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Machine Learning</span>
+                            <span>Predictive Quality</span>
+                            <span>Industrial IoT</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Mixed Reality Smart Heating -->
+                    <div class="project-card card">
+                        <div class="project-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thermometer"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+                        </div>
+                        <h3>MR-Based Smart Heating Control</h3>
+                        <p class="project-tag">ML & AR Research Project</p>
+                        <p class="project-desc">
+                            I worked on a university project to optimize heating systems. We combined AR glasses (Mixed Reality), sensor grids, and regression models to predict room occupancy, achieving a 75% reduction in energy usage in a university building.
+                        </p>
+                        <div class="project-tech">
+                            <span>AR Glasses</span>
+                            <span>IoT Sensors</span>
+                            <span>Regression Modeling</span>
+                            <span>HVAC Optimization</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: DeBaCode (Enactus) -->
+                    <div class="project-card card">
+                        <div class="project-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>DeBaCode Social Initiative</h3>
+                        <p class="project-tag">Project Lead & Startup Cup Winner</p>
+                        <p class="project-desc">
+                            I led the DeBaCode social initiative as part of Enactus. We set up digital bootcamps and job matching to help students from Bosnia and Herzegovina and Eastern Europe find remote work. We were honored as the Enactus Startup Cup Winner in 2024.
+                        </p>
+                        <div class="project-tech">
+                            <span>Project Management</span>
+                            <span>Enactus</span>
+                            <span>Social Impact</span>
+                            <span>Product Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section bg-light-dark">
+            <div class="container scroll-reveal">
+                <div class="section-header">
+                    <span class="subtitle">My Stack</span>
+                    <h2 class="title">Skills & Technologies</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="skills-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="languages">Languages</button>
+                    <button class="filter-btn" data-filter="ml-ai">ML & AI</button>
+                    <button class="filter-btn" data-filter="data-cloud">Data & Tools</button>
+                </div>
+                
+                <div class="skills-grid">
+                    <!-- Languages -->
+                    <div class="skill-item card" data-category="languages">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-level">Expert / Core Development</span>
+                    </div>
+                    <div class="skill-item card" data-category="languages">
+                        <span class="skill-name">SQL</span>
+                        <span class="skill-level">Advanced (Analytics & Extraction)</span>
+                    </div>
+                    <div class="skill-item card" data-category="languages">
+                        <span class="skill-name">JavaScript / TS</span>
+                        <span class="skill-level">Advanced / Web Systems</span>
+                    </div>
+                    <div class="skill-item card" data-category="languages">
+                        <span class="skill-name">R</span>
+                        <span class="skill-level">Intermediate / Time Series</span>
+                    </div>
+                    <div class="skill-item card" data-category="languages">
+                        <span class="skill-name">VBA</span>
+                        <span class="skill-level">Excel Automation</span>
+                    </div>
+                    
+                    <!-- ML & AI -->
+                    <div class="skill-item card" data-category="ml-ai">
+                        <span class="skill-name">PyTorch</span>
+                        <span class="skill-level">Advanced (Deep CNNs, Computer Vision)</span>
+                    </div>
+                    <div class="skill-item card" data-category="ml-ai">
+                        <span class="skill-name">TensorFlow</span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="skill-item card" data-category="ml-ai">
+                        <span class="skill-name">Explainable AI (XAI)</span>
+                        <span class="skill-level">Academic Specialization</span>
+                    </div>
+                    <div class="skill-item card" data-category="ml-ai">
+                        <span class="skill-name">Informed Machine Learning</span>
+                        <span class="skill-level">Integration of Expert Logic</span>
+                    </div>
+                    <div class="skill-item card" data-category="ml-ai">
+                        <span class="skill-name">Topological Data Analysis</span>
+                        <span class="skill-level">Research Homology</span>
+                    </div>
+                    
+                    <!-- Data & Tools -->
+                    <div class="skill-item card" data-category="data-cloud">
+                        <span class="skill-name">Databricks</span>
+                        <span class="skill-level">Advanced (AI Pipelines)</span>
+                    </div>
+                    <div class="skill-item card" data-category="data-cloud">
+                        <span class="skill-name">PySpark</span>
+                        <span class="skill-level">Big Data Analytics</span>
+                    </div>
+                    <div class="skill-item card" data-category="data-cloud">
+                        <span class="skill-name">Git / Github</span>
+                        <span class="skill-level">Version Control</span>
+                    </div>
+                    <div class="skill-item card" data-category="data-cloud">
+                        <span class="skill-name">Excel</span>
+                        <span class="skill-level">Strategic Modelling</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container scroll-reveal">
+                <div class="section-header">
+                    <span class="subtitle">Get in Touch</span>
+                    <h2 class="title">Contact Information</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="contact-card card">
+                    <div class="contact-details">
+                        <p class="contact-intro">
+                            I am always open to exchanging ideas, collaborating, or discussing new opportunities. Feel free to reach out to me via email or connect with me on LinkedIn.
+                        </p>
+                        
+                        <div class="contact-info-list">
+                            <!-- Email -->
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <span class="label">Email</span>
+                                    <a href="mailto:lasselemmer@gmail.com" class="value" id="email-contact">lasselemmer@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone -->
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <span class="label">Phone</span>
+                                    <a href="tel:+491732043734" class="value" id="phone-contact">+49 173 2043734</a>
+                                </div>
+                            </div>
+                            
+                            <!-- LinkedIn -->
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <span class="label">LinkedIn</span>
+                                    <a href="https://www.linkedin.com/in/lasse-lemmer-242a0a1b8/" target="_blank" rel="noopener noreferrer" class="value" id="linkedin-contact">linkedin.com/in/lasse-lemmer-242a0a1b8/</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <p class="copyright">&copy; 2026 Lasse Giorgio Lemmer. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/lasle" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/lasse-lemmer-242a0a1b8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script src="script.js"></script>
+</body>
+</html>
