@@ -684,10 +684,6 @@ h1, h2, h3, h4 {
     margin-bottom: 1.5rem;
 }
 
-.project-desc a {
-    color: var(--accent-primary);
-}
-
 .project-tech {
     display: flex;
     flex-wrap: wrap;

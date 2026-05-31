@@ -7,27 +7,28 @@ This is a standalone, high-performance personal portfolio website built with pur
 Since this portfolio is completely independent of the `music-roulette` application, you should move this folder out of the application directory and upload it to its own GitHub repository.
 
 ### Step 1: Move the Portfolio Folder
-Move the `portfolio/` folder to a separate location (e.g., your Desktop or a dedicated projects folder) and rename it to match your GitHub repository name:
+Move the `portfolio/` folder to a separate location (e.g., your Desktop or a dedicated projects folder) and rename it to match your GitHub username:
 ```bash
 # Rename the folder to your GitHub Pages repository format
-lasle.github.io
+lasselemmer.github.io
 ```
 
 ### Step 2: Create a New GitHub Repository
-1. Go to [github.com](https://github.com/) and log in as **`lasle`**.
+1. Go to [github.com](https://github.com/) and log in.
 2. Click **New** to create a new repository.
-3. **Important:** Name the repository exactly:
-   `lasle.github.io`
+3. **Important:** Name the repository exactly in this format:
+   `username.github.io`
+   *(Replace `username` with your actual GitHub username. For example, if your username is `lasselemmer`, name it `lasselemmer.github.io`)*.
 4. Set the repository visibility to **Public**.
-5. Leave "Add a README file", ".gitignore", and "Choose a license" **unchecked**.
+5. Leave "Add a README file", ".gitignore", and "Choose a license" **unchecked** (we will initialize it from local files).
 6. Click **Create repository**.
 
 ### Step 3: Initialize Git and Push Your Code
-Open your terminal, navigate to the renamed portfolio folder on your Desktop, and run the following commands:
+Open your terminal, navigate to the renamed portfolio folder, and run the following commands:
 
 ```bash
 # 1. Navigate into your portfolio folder
-cd ~/Desktop/lasle.github.io
+cd /path/to/your/lasselemmer.github.io
 
 # 2. Initialize a local Git repository
 git init
@@ -42,7 +43,8 @@ git commit -m "Initial commit of portfolio website"
 git branch -M main
 
 # 6. Link your local repository to your remote GitHub repository
-git remote add origin https://github.com/lasle/lasle.github.io.git
+# (Replace 'username' with your actual GitHub username)
+git remote add origin https://github.com/username/username.github.io.git
 
 # 7. Push your code to GitHub
 git push -u origin main
@@ -54,4 +56,4 @@ git push -u origin main
 3. Under the left menu, select **Pages**.
 4. Under **Build and deployment**, make sure the source is set to **Deploy from a branch**, and the branch is set to **`main`** and **`/ (root)`**.
 5. After a minute or two, your portfolio will be live at:
-   `https://lasle.github.io`
+   `https://username.github.io`
