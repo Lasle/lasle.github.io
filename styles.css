@@ -997,169 +997,14 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   PREMIUM UX: CARD-ALIGNED 3D PENCIL ILLUSTRATIONS
+   GLASSMORPHIC CARD GLARE EFFECT & LAYOUTS
    ========================================================================== */
-
-/* Hide the sticky desktop showcase columns */
-.scrolly-showcase-column {
-    display: none !important;
-}
-
-/* Ensure the outer container stretches full-width */
-@media (min-width: 969px) {
-    .scrolly-section-container {
-        display: block !important;
-    }
-}
-
 .ventures-list {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
 }
 
-/* Card-aligned illustration container (formerly mobile-only) */
-.mobile-inline-illustration {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
-    width: 100%;
-    height: 185px;
-    margin: 1.5rem auto 0;
-    
-    /* Technical blueprint/pencil sketch grid boundary */
-    background-image: 
-        linear-gradient(rgba(243, 244, 246, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(243, 244, 246, 0.02) 1px, transparent 1px);
-    background-size: 15px 15px;
-    background-position: center;
-    border: 1px solid rgba(243, 244, 246, 0.06);
-    border-radius: var(--border-radius-sm);
-    background-color: rgba(255, 255, 255, 0.01);
-    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.02);
-}
-
-/* Desktop Two-Column Layout inside Cards */
-@media (min-width: 969px) {
-    .card {
-        display: grid !important;
-        grid-template-columns: 1.3fr 0.7fr !important;
-        gap: 0.5rem 2.5rem !important;
-        align-items: center;
-    }
-    
-    .card > *:not(.mobile-inline-illustration) {
-        grid-column: 1;
-    }
-    
-    .card > .mobile-inline-illustration {
-        grid-column: 2;
-        grid-row: 1 / 25; /* Span all text content rows on the left */
-        align-self: center;
-        margin: 0;
-        height: 200px;
-    }
-}
-
-/* CSS 3D Depth Transforms */
-.illustration-3d {
-    width: 220px;
-    height: 220px;
-    transform-style: preserve-3d;
-    transform: rotateX(15deg) rotateY(-15deg);
-    transition: transform 0.12s ease-out;
-}
-
-.parallax-layer-back {
-    transform: translateZ(-35px);
-    transform-style: preserve-3d;
-}
-
-.parallax-layer-mid {
-    transform: translateZ(0px);
-    transform-style: preserve-3d;
-}
-
-.parallax-layer-front {
-    transform: translateZ(35px);
-    transform-style: preserve-3d;
-}
-
-/* Custom Micro-Animations */
-@keyframes float-bob {
-    0% { transform: translateZ(35px) translateY(0px); }
-    100% { transform: translateZ(35px) translateY(-8px); }
-}
-
-@keyframes float-bob-mid {
-    0% { transform: translateZ(0px) translateY(0px); }
-    100% { transform: translateZ(0px) translateY(-4px); }
-}
-
-@keyframes float-bob-deep {
-    0% { transform: translateZ(55px) translateY(0px); }
-    100% { transform: translateZ(55px) translateY(-10px); }
-}
-
-@keyframes slow-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.svg-rotate-slow {
-    animation: slow-spin 25s linear infinite;
-}
-
-.svg-float-1 {
-    animation: float-bob 4s ease-in-out infinite alternate;
-}
-
-.svg-float-2 {
-    animation: float-bob-mid 5s ease-in-out infinite alternate;
-}
-
-.svg-float-3 {
-    animation: float-bob-deep 3s ease-in-out infinite alternate;
-}
-
-/* ==========================================================================
-   TECHNICAL PENCIL SKETCH WIREFRAME STYLING (COLOR-FREE)
-   ========================================================================== */
-.illustration-3d svg *,
-.mobile-inline-illustration svg * {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.illustration-3d svg path,
-.illustration-3d svg circle,
-.illustration-3d svg rect,
-.illustration-3d svg polygon,
-.illustration-3d svg ellipse,
-.mobile-inline-illustration svg path,
-.mobile-inline-illustration svg circle,
-.mobile-inline-illustration svg rect,
-.mobile-inline-illustration svg polygon,
-.mobile-inline-illustration svg ellipse {
-    fill: none !important;
-    fill-opacity: 0 !important;
-    stroke: rgba(243, 244, 246, 0.45) !important; /* Sketched light-gray pencil line */
-    stroke-width: 1.0px !important;
-    filter: none !important; /* Completely remove colored glows */
-}
-
-/* Technical text labels */
-.illustration-3d svg text,
-.mobile-inline-illustration svg text {
-    fill: rgba(243, 244, 246, 0.75) !important;
-    stroke: none !important;
-    font-weight: 500;
-}
-
-/* ==========================================================================
-   GLASSMORPHIC CARD GLARE EFFECT
-   ========================================================================== */
 .card {
     position: relative;
     overflow: hidden;
@@ -1186,34 +1031,6 @@ h1, h2, h3, h4 {
 .card > *:not(.card-glare) {
     position: relative;
     z-index: 2;
-}
-
-/* Mobile responsive resets */
-@media (max-width: 968px) {
-    .scrolly-section-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .mobile-inline-illustration {
-        display: block !important;
-        width: 100%;
-        max-width: 240px;
-        height: 180px;
-        margin: 0 auto 1.5rem;
-        perspective: 800px;
-    }
-    
-    .mobile-inline-illustration svg {
-        width: 100%;
-        height: 100%;
-    }
-    
-    .mobile-inline-illustration .illustration-3d {
-        width: 100%;
-        height: 100%;
-        transform: rotateX(10deg) rotateY(-10deg);
-    }
 }
 
 

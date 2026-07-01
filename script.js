@@ -153,61 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==========================================================================
-    // 6. SCROLLYTELLING 3D ILLUSTRATIONS (PENCIL SKETCH ROTATION)
-    // ==========================================================================
-    window.addEventListener('scroll', () => {
-        const rotation = (window.scrollY * 0.15) % 360;
-        document.querySelectorAll('.illustration-3d').forEach(el => {
-            if (!el.classList.contains('mouse-hovering')) {
-                el.style.transform = `rotateX(15deg) rotateY(${rotation - 15}deg)`;
-            }
-        });
-    });
-    
-    // Initial run
-    const initialRotation = (window.scrollY * 0.15) % 360;
-    document.querySelectorAll('.illustration-3d').forEach(el => {
-        el.style.transform = `rotateX(15deg) rotateY(${initialRotation - 15}deg)`;
-    });
 
-    // ==========================================================================
-    // 7. 3D CURSOR TILT FOR ACTIVE SVGS
-    // ==========================================================================
-    const viewports = document.querySelectorAll('.mobile-inline-illustration');
-    
-    viewports.forEach(viewport => {
-        viewport.addEventListener('mousemove', (e) => {
-            const activeIllustration = viewport.querySelector('.illustration-3d');
-            if (!activeIllustration) return;
-            
-            activeIllustration.classList.add('mouse-hovering');
-            
-            const rect = viewport.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            // Calculate degrees (-20deg to +20deg)
-            const rotateY = ((x - centerX) / centerX) * 20;
-            const rotateX = -((y - centerY) / centerY) * 20;
-            
-            // Combine scroll-driven rotation and mouse tilt offsets
-            const currentScrollRotation = (window.scrollY * 0.15) % 360;
-            activeIllustration.style.transform = `rotateX(${15 + rotateX}deg) rotateY(${currentScrollRotation - 15 + rotateY}deg) scale(1.05)`;
-        });
-        
-        viewport.addEventListener('mouseleave', () => {
-            const activeIllustration = viewport.querySelector('.illustration-3d');
-            if (activeIllustration) {
-                activeIllustration.classList.remove('mouse-hovering');
-                const currentScrollRotation = (window.scrollY * 0.15) % 360;
-                activeIllustration.style.transform = `rotateX(15deg) rotateY(${currentScrollRotation - 15}deg) scale(1)`;
-            }
-        });
-    });
 
     // ==========================================================================
     // 8. GLASSMORPHIC CARD CURSOR GLARE
