@@ -1033,6 +1033,17 @@ h1, h2, h3, h4 {
         align-items: center;
         perspective: 1200px;
         pointer-events: auto;
+        
+        /* Blueprint grid background */
+        background-image: 
+            linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+        background-position: center;
+        border: 1px solid rgba(99, 102, 241, 0.12);
+        border-radius: var(--border-radius-md);
+        box-shadow: inset 0 0 35px rgba(99, 102, 241, 0.08);
+        background-color: rgba(11, 15, 25, 0.25);
     }
 }
 
@@ -1077,6 +1088,71 @@ h1, h2, h3, h4 {
     transform-style: preserve-3d;
     transform: rotateX(15deg) rotateY(-15deg);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Technical Sketch / Blueprint Line-Art styling */
+.illustration-3d svg *,
+.mobile-inline-illustration svg * {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.illustration-3d svg path,
+.illustration-3d svg circle,
+.illustration-3d svg rect,
+.illustration-3d svg polygon,
+.illustration-3d svg ellipse,
+.mobile-inline-illustration svg path,
+.mobile-inline-illustration svg circle,
+.mobile-inline-illustration svg rect,
+.mobile-inline-illustration svg polygon,
+.mobile-inline-illustration svg ellipse {
+    fill-opacity: 0.02 !important;
+    stroke: #4f46e5; /* base dark indigo line */
+    stroke-width: 1.2px !important;
+}
+
+/* Specific glows and colors for a digital vector blueprint feel */
+.illustration-3d svg [stroke="#ffffff"],
+.mobile-inline-illustration svg [stroke="#ffffff"] {
+    stroke: #38bdf8 !important; /* cyan accents */
+    stroke-width: 1.5px !important;
+    filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.5));
+}
+
+.illustration-3d svg [stroke="#a855f7"],
+.mobile-inline-illustration svg [stroke="#a855f7"] {
+    stroke: #a855f7 !important; /* purple accents */
+    stroke-width: 1.5px !important;
+    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.5));
+}
+
+.illustration-3d svg [stroke="#00a896"],
+.mobile-inline-illustration svg [stroke="#00a896"] {
+    stroke: #02c39a !important; /* KIT green/teal accents */
+    stroke-width: 1.5px !important;
+    filter: drop-shadow(0 0 4px rgba(2, 195, 154, 0.5));
+}
+
+.illustration-3d svg [fill="#1db954"],
+.mobile-inline-illustration svg [fill="#1db954"] {
+    fill: #1db954 !important;
+    fill-opacity: 0.08 !important;
+    stroke: #1db954 !important;
+}
+
+.illustration-3d svg [fill="#ffffff"],
+.mobile-inline-illustration svg [fill="#ffffff"] {
+    fill: #38bdf8 !important;
+    fill-opacity: 0.08 !important;
+    stroke: #38bdf8 !important;
+}
+
+.illustration-3d svg text,
+.mobile-inline-illustration svg text {
+    fill: #f3f4f6 !important;
+    font-weight: bold;
+    stroke: none !important;
 }
 
 .parallax-layer-back {

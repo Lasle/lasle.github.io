@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const firstLetter = role.charAt(0).toLowerCase();
         const vowels = ['a', 'e', 'i', 'o', 'u'];
         if (vowels.includes(firstLetter)) {
-            prefixElement.textContent = "I'm an ";
+            prefixElement.textContent = "I'm an\u00A0";
         } else {
-            prefixElement.textContent = "I'm a ";
+            prefixElement.textContent = "I'm a\u00A0";
         }
     }
 
@@ -165,19 +165,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ill) ill.classList.add('active');
     });
 
-    const scrollyObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const itemId = entry.target.getAttribute('data-scrolly-id');
-                const parentSection = entry.target.closest('section');
-                if (!parentSection) return;
-                
-                const targetIll = parentSection.querySelector(`.showcase-illustration[data-illustration-id="${itemId}"]`);
-                if (!targetIll) return;
-                
-                // If already active, do nothing
-                if (targetIll.classList.contains('active')) return;
-                
+    function updateActiveIllustration() {
+        const viewportCenter = window.innerHeight / 2;
+        let closestItem = null;
+        let minDistance = Infinity;
+        
+        scrollyItems.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(itemCenter - viewportCenter);
+            
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestItem = item;
+            }
+        });
+        
+        if (closestItem) {
+            const itemId = closestItem.getAttribute('data-scrolly-id');
+            const parentSection = closestItem.closest('section');
+            if (!parentSection) return;
+            
+            const targetIll = parentSection.querySelector(`.showcase-illustration[data-illustration-id="${itemId}"]`);
+            if (targetIll && !targetIll.classList.contains('active')) {
                 // Deactivate current active in this section
                 const currentActive = parentSection.querySelector('.showcase-illustration.active');
                 if (currentActive) {
@@ -191,15 +201,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Activate new one
                 targetIll.classList.add('active');
             }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '-20% 0px -20% 0px' // focus on center area of screen
-    });
+        }
+    }
 
-    scrollyItems.forEach(item => {
-        scrollyObserver.observe(item);
-    });
+    // Attach continuous scroll and resize listener for precise tracking
+    window.addEventListener('scroll', updateActiveIllustration);
+    window.addEventListener('resize', updateActiveIllustration);
+    
+    // Run initially to set first states
+    updateActiveIllustration();
 
     // ==========================================================================
     // 7. 3D CURSOR TILT FOR ACTIVE SVGS
