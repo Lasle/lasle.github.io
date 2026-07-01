@@ -15,6 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDeleting = false;
     let typingSpeed = 100;
 
+    const prefixElement = document.getElementById('hero-prefix');
+
+    function updatePrefix(role) {
+        if (!prefixElement) return;
+        const firstLetter = role.charAt(0).toLowerCase();
+        const vowels = ['a', 'e', 'i', 'o', 'u'];
+        if (vowels.includes(firstLetter)) {
+            prefixElement.textContent = "I'm an ";
+        } else {
+            prefixElement.textContent = "I'm a ";
+        }
+    }
+
     function typeRole() {
         const currentRole = roles[currentRoleIndex];
 
@@ -39,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isDeleting = false;
             // Move to next word index
             currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+            updatePrefix(roles[currentRoleIndex]);
             typingSpeed = 500; // Pause before typing next word
         }
 
@@ -47,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize typing animation if element exists
     if (typingTextElement) {
+        updatePrefix(roles[currentRoleIndex]);
         typeRole();
     }
 
@@ -135,6 +150,125 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.classList.add('hidden');
                 }
             });
+        });
+    });
+
+    // ==========================================================================
+    // 6. SCROLLYTELLING 3D ILLUSTRATIONS
+    // ==========================================================================
+    const scrollyItems = document.querySelectorAll('[data-scrolly-id]');
+    
+    // Initial active states
+    const initialActiveIds = ['venture-music', 'edu-kit-master', 'exp-scalable'];
+    initialActiveIds.forEach(id => {
+        const ill = document.querySelector(`.showcase-illustration[data-illustration-id="${id}"]`);
+        if (ill) ill.classList.add('active');
+    });
+
+    const scrollyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const itemId = entry.target.getAttribute('data-scrolly-id');
+                const parentSection = entry.target.closest('section');
+                if (!parentSection) return;
+                
+                const targetIll = parentSection.querySelector(`.showcase-illustration[data-illustration-id="${itemId}"]`);
+                if (!targetIll) return;
+                
+                // If already active, do nothing
+                if (targetIll.classList.contains('active')) return;
+                
+                // Deactivate current active in this section
+                const currentActive = parentSection.querySelector('.showcase-illustration.active');
+                if (currentActive) {
+                    currentActive.classList.remove('active');
+                    currentActive.classList.add('exit');
+                    setTimeout(() => {
+                        currentActive.classList.remove('exit');
+                    }, 800);
+                }
+                
+                // Activate new one
+                targetIll.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '-20% 0px -20% 0px' // focus on center area of screen
+    });
+
+    scrollyItems.forEach(item => {
+        scrollyObserver.observe(item);
+    });
+
+    // ==========================================================================
+    // 7. 3D CURSOR TILT FOR ACTIVE SVGS
+    // ==========================================================================
+    const viewports = document.querySelectorAll('.showcase-viewport');
+    
+    viewports.forEach(viewport => {
+        viewport.addEventListener('mousemove', (e) => {
+            const activeIllustration = viewport.querySelector('.showcase-illustration.active .illustration-3d');
+            if (!activeIllustration) return;
+            
+            const rect = viewport.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate degrees (-20deg to +20deg)
+            const rotateY = ((x - centerX) / centerX) * 20;
+            const rotateX = -((y - centerY) / centerY) * 20;
+            
+            activeIllustration.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+        
+        viewport.addEventListener('mouseleave', () => {
+            const activeIllustration = viewport.querySelector('.showcase-illustration.active .illustration-3d');
+            if (activeIllustration) {
+                activeIllustration.style.transform = 'rotateX(15deg) rotateY(-15deg) scale(1)';
+            }
+        });
+    });
+
+    // ==========================================================================
+    // 8. GLASSMORPHIC CARD CURSOR GLARE
+    // ==========================================================================
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        const glare = document.createElement('div');
+        glare.className = 'card-glare';
+        card.appendChild(glare);
+        
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // ==========================================================================
+    // 9. MAGNETIC BUTTON PULL
+    // ==========================================================================
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+            btn.style.boxShadow = `0 8px 30px rgba(99, 102, 241, 0.35)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+            btn.style.boxShadow = '';
         });
     });
 });
