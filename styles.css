@@ -524,7 +524,7 @@ h1, h2, h3, h4 {
    ========================================================================== */
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -575,7 +575,7 @@ h1, h2, h3, h4 {
 }
 
 .timeline-content.card {
-    padding: 1.75rem 2rem;
+    padding: 1.25rem 1.75rem;
 }
 
 .card-header-flex {
