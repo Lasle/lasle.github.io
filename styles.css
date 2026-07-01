@@ -997,53 +997,18 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   PREMIUM UX: SCROLLYTELLING & 3D ILLUSTRATIONS
+   PREMIUM UX: CARD-ALIGNED 3D PENCIL ILLUSTRATIONS
    ========================================================================== */
 
-/* Two-column layout for scrollytelling sections */
+/* Hide the sticky desktop showcase columns */
+.scrolly-showcase-column {
+    display: none !important;
+}
+
+/* Ensure the outer container stretches full-width */
 @media (min-width: 969px) {
     .scrolly-section-container {
-        display: grid;
-        grid-template-columns: 1.25fr 0.75fr;
-        gap: 4rem;
-        align-items: start;
-    }
-
-    .scrolly-text-column {
-        flex-grow: 1;
-    }
-
-    .scrolly-showcase-column {
-        position: sticky;
-        top: 15vh;
-        height: 70vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 5;
-        pointer-events: none;
-    }
-
-    .showcase-viewport {
-        width: 320px;
-        height: 320px;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        perspective: 1200px;
-        pointer-events: auto;
-        
-        /* Blueprint grid background */
-        background-image: 
-            linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
-        background-size: 20px 20px;
-        background-position: center;
-        border: 1px solid rgba(99, 102, 241, 0.12);
-        border-radius: var(--border-radius-md);
-        box-shadow: inset 0 0 35px rgba(99, 102, 241, 0.08);
-        background-color: rgba(11, 15, 25, 0.25);
+        display: block !important;
     }
 }
 
@@ -1053,44 +1018,114 @@ h1, h2, h3, h4 {
     gap: 2.5rem;
 }
 
-/* 3D Illustration Containers & States */
-.showcase-illustration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
+/* Card-aligned illustration container (formerly mobile-only) */
+.mobile-inline-illustration {
+    display: flex !important;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transform: translate3d(0, 80px, -150px) rotateY(-90deg) scale(0.6);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
+    perspective: 1000px;
+    width: 100%;
+    height: 185px;
+    margin: 1.5rem auto 0;
+    
+    /* Technical blueprint/pencil sketch grid boundary */
+    background-image: 
+        linear-gradient(rgba(243, 244, 246, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 244, 246, 0.02) 1px, transparent 1px);
+    background-size: 15px 15px;
+    background-position: center;
+    border: 1px solid rgba(243, 244, 246, 0.06);
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(255, 255, 255, 0.01);
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.02);
 }
 
-.showcase-illustration.active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
-    pointer-events: auto;
-}
-
-.showcase-illustration.exit {
-    opacity: 0;
-    transform: translate3d(0, -80px, -150px) rotateY(90deg) scale(0.6);
+/* Desktop Two-Column Layout inside Cards */
+@media (min-width: 969px) {
+    .card {
+        display: grid !important;
+        grid-template-columns: 1.3fr 0.7fr !important;
+        gap: 0.5rem 2.5rem !important;
+        align-items: center;
+    }
+    
+    .card > *:not(.mobile-inline-illustration) {
+        grid-column: 1;
+    }
+    
+    .card > .mobile-inline-illustration {
+        grid-column: 2;
+        grid-row: 1 / 25; /* Span all text content rows on the left */
+        align-self: center;
+        margin: 0;
+        height: 200px;
+    }
 }
 
 /* CSS 3D Depth Transforms */
 .illustration-3d {
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
     transform-style: preserve-3d;
     transform: rotateX(15deg) rotateY(-15deg);
     transition: transform 0.12s ease-out;
 }
 
-/* Technical Sketch / Blueprint Line-Art styling */
+.parallax-layer-back {
+    transform: translateZ(-35px);
+    transform-style: preserve-3d;
+}
+
+.parallax-layer-mid {
+    transform: translateZ(0px);
+    transform-style: preserve-3d;
+}
+
+.parallax-layer-front {
+    transform: translateZ(35px);
+    transform-style: preserve-3d;
+}
+
+/* Custom Micro-Animations */
+@keyframes float-bob {
+    0% { transform: translateZ(35px) translateY(0px); }
+    100% { transform: translateZ(35px) translateY(-8px); }
+}
+
+@keyframes float-bob-mid {
+    0% { transform: translateZ(0px) translateY(0px); }
+    100% { transform: translateZ(0px) translateY(-4px); }
+}
+
+@keyframes float-bob-deep {
+    0% { transform: translateZ(55px) translateY(0px); }
+    100% { transform: translateZ(55px) translateY(-10px); }
+}
+
+@keyframes slow-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.svg-rotate-slow {
+    animation: slow-spin 25s linear infinite;
+}
+
+.svg-float-1 {
+    animation: float-bob 4s ease-in-out infinite alternate;
+}
+
+.svg-float-2 {
+    animation: float-bob-mid 5s ease-in-out infinite alternate;
+}
+
+.svg-float-3 {
+    animation: float-bob-deep 3s ease-in-out infinite alternate;
+}
+
+/* ==========================================================================
+   TECHNICAL PENCIL SKETCH WIREFRAME STYLING (COLOR-FREE)
+   ========================================================================== */
 .illustration-3d svg *,
 .mobile-inline-illustration svg * {
     stroke-linecap: round;
@@ -1107,108 +1142,19 @@ h1, h2, h3, h4 {
 .mobile-inline-illustration svg rect,
 .mobile-inline-illustration svg polygon,
 .mobile-inline-illustration svg ellipse {
-    fill-opacity: 0.02 !important;
-    stroke: #4f46e5; /* base dark indigo line */
-    stroke-width: 1.2px !important;
+    fill: none !important;
+    fill-opacity: 0 !important;
+    stroke: rgba(243, 244, 246, 0.45) !important; /* Sketched light-gray pencil line */
+    stroke-width: 1.0px !important;
+    filter: none !important; /* Completely remove colored glows */
 }
 
-/* Specific glows and colors for a digital vector blueprint feel */
-.illustration-3d svg [stroke="#ffffff"],
-.mobile-inline-illustration svg [stroke="#ffffff"] {
-    stroke: #38bdf8 !important; /* cyan accents */
-    stroke-width: 1.5px !important;
-    filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.5));
-}
-
-.illustration-3d svg [stroke="#a855f7"],
-.mobile-inline-illustration svg [stroke="#a855f7"] {
-    stroke: #a855f7 !important; /* purple accents */
-    stroke-width: 1.5px !important;
-    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.5));
-}
-
-.illustration-3d svg [stroke="#00a896"],
-.mobile-inline-illustration svg [stroke="#00a896"] {
-    stroke: #02c39a !important; /* KIT green/teal accents */
-    stroke-width: 1.5px !important;
-    filter: drop-shadow(0 0 4px rgba(2, 195, 154, 0.5));
-}
-
-.illustration-3d svg [fill="#1db954"],
-.mobile-inline-illustration svg [fill="#1db954"] {
-    fill: #1db954 !important;
-    fill-opacity: 0.08 !important;
-    stroke: #1db954 !important;
-}
-
-.illustration-3d svg [fill="#ffffff"],
-.mobile-inline-illustration svg [fill="#ffffff"] {
-    fill: #38bdf8 !important;
-    fill-opacity: 0.08 !important;
-    stroke: #38bdf8 !important;
-}
-
+/* Technical text labels */
 .illustration-3d svg text,
 .mobile-inline-illustration svg text {
-    fill: #f3f4f6 !important;
-    font-weight: bold;
+    fill: rgba(243, 244, 246, 0.75) !important;
     stroke: none !important;
-}
-
-.parallax-layer-back {
-    transform: translateZ(-50px);
-    transform-style: preserve-3d;
-}
-
-.parallax-layer-mid {
-    transform: translateZ(0px);
-    transform-style: preserve-3d;
-}
-
-.parallax-layer-front {
-    transform: translateZ(50px);
-    transform-style: preserve-3d;
-}
-
-/* Custom Micro-Animations */
-@keyframes float-bob {
-    0% { transform: translateZ(50px) translateY(0px); }
-    100% { transform: translateZ(50px) translateY(-10px); }
-}
-
-@keyframes float-bob-mid {
-    0% { transform: translateZ(0px) translateY(0px); }
-    100% { transform: translateZ(0px) translateY(-5px); }
-}
-
-@keyframes float-bob-deep {
-    0% { transform: translateZ(80px) translateY(0px); }
-    100% { transform: translateZ(80px) translateY(-12px); }
-}
-
-@keyframes slow-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.svg-glow {
-    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.4));
-}
-
-.svg-rotate-slow {
-    animation: slow-spin 20s linear infinite;
-}
-
-.svg-float-1 {
-    animation: float-bob 4s ease-in-out infinite alternate;
-}
-
-.svg-float-2 {
-    animation: float-bob-mid 5s ease-in-out infinite alternate;
-}
-
-.svg-float-3 {
-    animation: float-bob-deep 3s ease-in-out infinite alternate;
+    font-weight: 500;
 }
 
 /* ==========================================================================
@@ -1242,25 +1188,15 @@ h1, h2, h3, h4 {
     z-index: 2;
 }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE SCROLLYTELLING FALLBACK)
-   ========================================================================== */
-.mobile-inline-illustration {
-    display: none;
-}
-
+/* Mobile responsive resets */
 @media (max-width: 968px) {
     .scrolly-section-container {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
     
-    .scrolly-showcase-column {
-        display: none;
-    }
-    
     .mobile-inline-illustration {
-        display: block;
+        display: block !important;
         width: 100%;
         max-width: 240px;
         height: 180px;
@@ -1279,4 +1215,5 @@ h1, h2, h3, h4 {
         transform: rotateX(10deg) rotateY(-10deg);
     }
 }
+
 

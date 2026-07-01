@@ -154,93 +154,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // 6. SCROLLYTELLING 3D ILLUSTRATIONS
+    // 6. SCROLLYTELLING 3D ILLUSTRATIONS (PENCIL SKETCH ROTATION)
     // ==========================================================================
-    const scrollyItems = document.querySelectorAll('[data-scrolly-id]');
-    
-    // Initial active states
-    const initialActiveIds = ['venture-music', 'edu-kit-master', 'exp-scalable'];
-    initialActiveIds.forEach(id => {
-        const ill = document.querySelector(`.showcase-illustration[data-illustration-id="${id}"]`);
-        if (ill) ill.classList.add('active');
-    });
-
-    let scrollRotation = 0;
-
-    function updateActiveIllustration() {
-        const viewportCenter = window.innerHeight / 2;
-        let closestItem = null;
-        let minDistance = Infinity;
-        
-        // Calculate continuous Y-rotation (e.g. 1.5 degrees per 10 pixels scrolled)
-        scrollRotation = (window.scrollY * 0.15) % 360;
-        
-        scrollyItems.forEach(item => {
-            const rect = item.getBoundingClientRect();
-            const itemCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(itemCenter - viewportCenter);
-            
-            if (distance < minDistance) {
-                minDistance = distance;
-                closestItem = item;
-            }
-        });
-        
-        if (closestItem) {
-            const itemId = closestItem.getAttribute('data-scrolly-id');
-            const parentSection = closestItem.closest('section');
-            if (!parentSection) return;
-            
-            const targetIll = parentSection.querySelector(`.showcase-illustration[data-illustration-id="${itemId}"]`);
-            if (targetIll) {
-                if (!targetIll.classList.contains('active')) {
-                    // Deactivate current active in this section
-                    const currentActive = parentSection.querySelector('.showcase-illustration.active');
-                    if (currentActive) {
-                        currentActive.classList.remove('active');
-                        currentActive.classList.add('exit');
-                        setTimeout(() => {
-                            currentActive.classList.remove('exit');
-                        }, 800);
-                    }
-                    
-                    // Activate new one
-                    targetIll.classList.add('active');
-                }
-                
-                // Update Y-rotation if not hovering
-                const active3D = targetIll.querySelector('.illustration-3d');
-                if (active3D && !active3D.classList.contains('mouse-hovering')) {
-                    active3D.style.transform = `rotateX(15deg) rotateY(${scrollRotation - 15}deg)`;
-                }
-            }
-        }
-    }
-
-    // Attach continuous scroll and resize listener for precise tracking
     window.addEventListener('scroll', () => {
-        updateActiveIllustration();
-        
-        // Update all active illustrations with the new Y-rotation
-        document.querySelectorAll('.showcase-illustration.active .illustration-3d').forEach(el => {
+        const rotation = (window.scrollY * 0.15) % 360;
+        document.querySelectorAll('.illustration-3d').forEach(el => {
             if (!el.classList.contains('mouse-hovering')) {
-                el.style.transform = `rotateX(15deg) rotateY(${(window.scrollY * 0.15) % 360 - 15}deg)`;
+                el.style.transform = `rotateX(15deg) rotateY(${rotation - 15}deg)`;
             }
         });
     });
-    window.addEventListener('resize', updateActiveIllustration);
     
-    // Run initially to set first states
-    updateActiveIllustration();
+    // Initial run
+    const initialRotation = (window.scrollY * 0.15) % 360;
+    document.querySelectorAll('.illustration-3d').forEach(el => {
+        el.style.transform = `rotateX(15deg) rotateY(${initialRotation - 15}deg)`;
+    });
 
     // ==========================================================================
     // 7. 3D CURSOR TILT FOR ACTIVE SVGS
     // ==========================================================================
-    const viewports = document.querySelectorAll('.showcase-viewport');
+    const viewports = document.querySelectorAll('.mobile-inline-illustration');
     
     viewports.forEach(viewport => {
         viewport.addEventListener('mousemove', (e) => {
-            const activeIllustration = viewport.querySelector('.showcase-illustration.active .illustration-3d');
+            const activeIllustration = viewport.querySelector('.illustration-3d');
             if (!activeIllustration) return;
             
             activeIllustration.classList.add('mouse-hovering');
@@ -262,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         viewport.addEventListener('mouseleave', () => {
-            const activeIllustration = viewport.querySelector('.showcase-illustration.active .illustration-3d');
+            const activeIllustration = viewport.querySelector('.illustration-3d');
             if (activeIllustration) {
                 activeIllustration.classList.remove('mouse-hovering');
                 const currentScrollRotation = (window.scrollY * 0.15) % 360;
