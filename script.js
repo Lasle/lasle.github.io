@@ -165,10 +165,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ill) ill.classList.add('active');
     });
 
+    let scrollRotation = 0;
+
     function updateActiveIllustration() {
         const viewportCenter = window.innerHeight / 2;
         let closestItem = null;
         let minDistance = Infinity;
+        
+        // Calculate continuous Y-rotation (e.g. 1.5 degrees per 10 pixels scrolled)
+        scrollRotation = (window.scrollY * 0.15) % 360;
         
         scrollyItems.forEach(item => {
             const rect = item.getBoundingClientRect();
@@ -187,25 +192,42 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!parentSection) return;
             
             const targetIll = parentSection.querySelector(`.showcase-illustration[data-illustration-id="${itemId}"]`);
-            if (targetIll && !targetIll.classList.contains('active')) {
-                // Deactivate current active in this section
-                const currentActive = parentSection.querySelector('.showcase-illustration.active');
-                if (currentActive) {
-                    currentActive.classList.remove('active');
-                    currentActive.classList.add('exit');
-                    setTimeout(() => {
-                        currentActive.classList.remove('exit');
-                    }, 800);
+            if (targetIll) {
+                if (!targetIll.classList.contains('active')) {
+                    // Deactivate current active in this section
+                    const currentActive = parentSection.querySelector('.showcase-illustration.active');
+                    if (currentActive) {
+                        currentActive.classList.remove('active');
+                        currentActive.classList.add('exit');
+                        setTimeout(() => {
+                            currentActive.classList.remove('exit');
+                        }, 800);
+                    }
+                    
+                    // Activate new one
+                    targetIll.classList.add('active');
                 }
                 
-                // Activate new one
-                targetIll.classList.add('active');
+                // Update Y-rotation if not hovering
+                const active3D = targetIll.querySelector('.illustration-3d');
+                if (active3D && !active3D.classList.contains('mouse-hovering')) {
+                    active3D.style.transform = `rotateX(15deg) rotateY(${scrollRotation - 15}deg)`;
+                }
             }
         }
     }
 
     // Attach continuous scroll and resize listener for precise tracking
-    window.addEventListener('scroll', updateActiveIllustration);
+    window.addEventListener('scroll', () => {
+        updateActiveIllustration();
+        
+        // Update all active illustrations with the new Y-rotation
+        document.querySelectorAll('.showcase-illustration.active .illustration-3d').forEach(el => {
+            if (!el.classList.contains('mouse-hovering')) {
+                el.style.transform = `rotateX(15deg) rotateY(${(window.scrollY * 0.15) % 360 - 15}deg)`;
+            }
+        });
+    });
     window.addEventListener('resize', updateActiveIllustration);
     
     // Run initially to set first states
@@ -221,6 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const activeIllustration = viewport.querySelector('.showcase-illustration.active .illustration-3d');
             if (!activeIllustration) return;
             
+            activeIllustration.classList.add('mouse-hovering');
+            
             const rect = viewport.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -232,13 +256,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const rotateY = ((x - centerX) / centerX) * 20;
             const rotateX = -((y - centerY) / centerY) * 20;
             
-            activeIllustration.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            // Combine scroll-driven rotation and mouse tilt offsets
+            const currentScrollRotation = (window.scrollY * 0.15) % 360;
+            activeIllustration.style.transform = `rotateX(${15 + rotateX}deg) rotateY(${currentScrollRotation - 15 + rotateY}deg) scale(1.05)`;
         });
         
         viewport.addEventListener('mouseleave', () => {
             const activeIllustration = viewport.querySelector('.showcase-illustration.active .illustration-3d');
             if (activeIllustration) {
-                activeIllustration.style.transform = 'rotateX(15deg) rotateY(-15deg) scale(1)';
+                activeIllustration.classList.remove('mouse-hovering');
+                const currentScrollRotation = (window.scrollY * 0.15) % 360;
+                activeIllustration.style.transform = `rotateX(15deg) rotateY(${currentScrollRotation - 15}deg) scale(1)`;
             }
         });
     });

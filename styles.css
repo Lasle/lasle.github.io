@@ -1087,7 +1087,7 @@ h1, h2, h3, h4 {
     height: 280px;
     transform-style: preserve-3d;
     transform: rotateX(15deg) rotateY(-15deg);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.12s ease-out;
 }
 
 /* Technical Sketch / Blueprint Line-Art styling */
